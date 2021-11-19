@@ -1,0 +1,28 @@
+
+EPU2 INSTRUCTION SET
+
+
+        NUMBER      MNEMONIC    OPCODE                  INSTRUCTION         COMMENT
+MEMORY
+mem     0           LDI         0000 0000 0000 0000     LOAD IMMEDIATE      LOAD A 16-BIT IMMEDIATE INTO THE ACCUMULATOR
+mem     1           LOAD        0000 RRRR 0001 0000     LOAD FROM MEMORY    LOAD A 32-BIT VALUE FROM RAM INTO THE ACCUMULATOR
+mem     2           STORE       0000 RRRR 0010 0000     STORE TO MEMORY     STORE THE VALUE IN THE ACCUMULATOR TO RAM
+mov     3           COPY        0000 RRRR 0000 0011     COPY REG TO ACC     COPY THE VALUE OF REG TO THE ACCUMULATOR
+mov     4           SAVE        0000 RRRR 0001 0011     COPY ACC TO REG     SAVE THE VALUE IN ACC TO THE REGISTER
+CONTROL
+jmp     5           JMP         0000 0000 0000 1000     UNCONDITIONAL JUMP  JUMP TO THIS ADDRESS PLUS A SIGNED 16-BIT OFFSET
+jmp     6           JMPI        0000 RRRR 0010 1000     INDIRECT JUMP       JUMP TO THE ADDRESS IN THE REGISTER
+jmp     7           JLZ         0000 RRRR 0001 1000     JUMP IF ZERO        JUMP IF ACCUMULATOR == 0
+jmp     8           JNZ         0000 RRRR 0011 1000     JUMP IF NOT ZERO    JUMP IF ACCUMULATOR != 0
+ARITHMETIC
+        9           AND         0000 RRRR 0000 0001     LOGICAL AND         ACC = ACC & B
+        10          OR          0000 RRRR 0001 0001     LOGICAL OR          ACC = ACC | B
+        11          NOT         0000 RRRR 0010 0001     LOGICAL NOT         ACC = ~ACC
+        12          XOR         0000 RRRR 0011 0001     LOGICAL XOR         ACC = ACC ^ B
+        13          ADD         0000 RRRR 0100 0001     ADDITION            ACC = ACC + B
+        14          SUB         0000 RRRR 0101 0001     SUBTRACTION         ACC = ACC - B
+        15          MUL         0000 RRRR 0110 0001     MULTIPLICATION      ACC = ACC * B
+        16          DIV         0000 RRRR 0111 0001     DIVISION            ACC_HI16 = ACC / B, ACC_LO16 = ACC % B
+        17          SHL         0000 RRRR 1000 0001     SHIFT LEFT          ACC = ACC << B
+        18          SHR         0000 RRRR 1001 0001     SHIFT RIGHT         ACC = ACC >> B
+
